@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+
+$background-color: #fff;
+$border-radius: 8px;
+
+@mixin background() {
+  background: $background-color;
+}
+
+@mixin border-radius() {
+  border-radius: $border-radius;
+}
+
+@mixin shadow() {
+  @include mat-elevation(5);
+}
