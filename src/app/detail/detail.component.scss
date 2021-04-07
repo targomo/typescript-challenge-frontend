@@ -1,5 +1,17 @@
+@import 'mixins';
+
 :host {
-  h1 {
-    margin: 0;
+  @include flex-column();
+  @include column-gap(1rem);
+  @include text();
+  .detail-header {
+    @include flex-row();
+    @include flex-align(space-between);
+    .title {
+      @include title();
+    }
+    button.mat-icon-button {
+      margin: -0.5rem;
+    }
   }
 }

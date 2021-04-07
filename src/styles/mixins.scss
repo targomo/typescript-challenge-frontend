@@ -2,6 +2,7 @@
 
 $background-color: #fff;
 $border-radius: 8px;
+$highlight-color: #eee;
 
 @mixin background() {
   background: $background-color;
@@ -13,4 +14,46 @@ $border-radius: 8px;
 
 @mixin shadow() {
   @include mat-elevation(5);
+}
+
+@mixin title() {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+@mixin subtitle() {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+@mixin text() {
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+@mixin flex-row() {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-column() {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin row-gap($size) {
+  & > :not(:last-child) {
+    margin-right: $size;
+  }
+}
+
+@mixin column-gap($size) {
+  & > :not(:last-child) {
+    margin-bottom: $size;
+  }
+}
+
+@mixin flex-align($justify: flex-start, $align: center) {
+  align-items: $align;
+  justify-content: $justify;
 }

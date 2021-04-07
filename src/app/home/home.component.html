@@ -1,13 +1,18 @@
-<h1>All Lines</h1>
+<h1 class="title">All Lines</h1>
 
 <div class="lines-list">
   <div class="line-item" *ngFor="let line of lines$ | async">
-    <h2>{{line.lineId}} ({{line.numberOfStops}} Stops)</h2>
-    <mat-list dense class="stops-list">
-      <mat-list-item matRipple (click)="selectStop(stop.stopId)" class="stop-item" *ngFor="let stop of line.stops">
+    <div class="line-header">
+      <mat-icon>directions_transit</mat-icon>
+      <h2 class="subtitle">{{line.lineId}}</h2>
+      <span class="stops-count">{{line.numberOfStops}} Stops</span>
+    </div>
+    <div class="stops-list">
+      <div (click)="selectStop(stop.stopId)" class="stop-item" *ngFor="let stop of line.stops">
+        <mat-icon>stop_circle</mat-icon>
         <span>{{stop.name}}</span>
-      </mat-list-item>
-    </mat-list>
+      </div>
+    </div>
   </div>
 </div>
 
