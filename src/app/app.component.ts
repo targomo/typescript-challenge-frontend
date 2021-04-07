@@ -18,10 +18,7 @@ export class AppComponent implements OnInit {
   private map: Map
 
   constructor(private store: Store<RootState>) {
-    /**
-     * TODO (ONLY for full stack applicants)
-     * Replace this with an initial call to the back end service
-     */
+    // Issue https://github.com/targomo/typescript-challenge-frontend/issues/3
     this.store.dispatch(TransitLinesActions.AddLine({ lineId: 'u9', line: u9 }))
   }
 
@@ -48,34 +45,12 @@ export class AppComponent implements OnInit {
 
       const STOPS_LAYER_ID = 'stops-layer'
       this.map.addLayer({ type: 'circle', source: STOPS_SOURCE_ID, id: STOPS_LAYER_ID, paint: MARKER_PAINT })
-      /**
-       * TODO
-       * Find a way to visualize the available data (people on/off, reachable population) on the map
-       * HINT:
-       * https://docs.mapbox.com/mapbox-gl-js/example/data-driven-circle-colors/
-       */
 
-      /**
-       * TODO
-       * Find a way to highlight the selected stop on the map
-       * HINT:
-       * https://docs.mapbox.com/help/tutorials/create-interactive-hover-effects-with-mapbox-gl-js/
-       */
-
-      /**
-       * TODO
-       * Add a line layer here to show the connection between the stops.
-       * HINT:
-       * https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/#line
-       */
-
-      /**
-       * TODO (ONLY for front end applicants)
-       * Add a click listener to the map and dispatch the stop selection, so a user can also select a stop from the map
-       * HINT:
-       * https://docs.mapbox.com/mapbox-gl-js/api/events/#mapmouseevent
-       * https://docs.mapbox.com/mapbox-gl-js/api/map/#map#queryrenderedfeatures
-       */
+      // The following issues are likely to be implemented here
+      // https://github.com/targomo/typescript-challenge-frontend/issues/2
+      // https://github.com/targomo/typescript-challenge-frontend/issues/2
+      // https://github.com/targomo/typescript-challenge-frontend/issues/6
+      // https://github.com/targomo/typescript-challenge-frontend/issues/8/
     })
   }
 }

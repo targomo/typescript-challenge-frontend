@@ -46,8 +46,8 @@ export namespace fromTransitLines {
       } as GeoJSONSourceRaw)
   )
 
+  // Issue https://github.com/targomo/typescript-challenge-frontend/issues/1
   export const stopsLinesGeoJson = createSelector(lines, (storeLines) => {
-    // TODO return geojson with lines
     return null
   })
 }
