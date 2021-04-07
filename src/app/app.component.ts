@@ -1,5 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'
-import { Map } from 'mapbox-gl'
+import { select, Store } from '@ngrx/store'
+import { GeoJSONSource, Map } from 'mapbox-gl'
+import { MARKER_PAINT } from 'src/constants/marker-paint'
+import { u9 } from 'src/constants/u9'
+import { RootState } from 'src/store/app.store'
+import { TransitLinesActions } from 'src/store/transit-lines/transit-lines.actions'
+import { fromTransitLines } from 'src/store/transit-lines/transit-lines.selectors'
 
 @Component({
   selector: 'app-root',
@@ -11,7 +17,9 @@ export class AppComponent implements OnInit {
 
   private map: Map
 
-  constructor() {}
+  constructor(private store: Store<RootState>) {
+    this.store.dispatch(TransitLinesActions.AddLine({ lineId: 'u9', line: u9 }))
+  }
 
   ngOnInit() {
     this.map = new Map({
@@ -19,6 +27,23 @@ export class AppComponent implements OnInit {
       zoom: 10,
       container: this.mapRef.nativeElement,
       style: 'https://maps.targomo.com/styles/positron-gl-style.json',
+    })
+
+    this.map.once('load', () => {
+      const stopsSource$ = this.store.pipe(select(fromTransitLines.stopsPointGeoJson))
+      const STOPS_SOURCE_ID = 'stops-source'
+
+      stopsSource$.subscribe((source) => {
+        const exsitingSource = <GeoJSONSource>this.map.getSource(STOPS_SOURCE_ID)
+        if (exsitingSource) {
+          exsitingSource.setData(source.data)
+        } else {
+          this.map.addSource(STOPS_SOURCE_ID, source)
+        }
+      })
+
+      const STOPS_LAYER_ID = 'stops-layer'
+      this.map.addLayer({ type: 'circle', source: STOPS_SOURCE_ID, id: STOPS_LAYER_ID, paint: MARKER_PAINT })
     })
   }
 }

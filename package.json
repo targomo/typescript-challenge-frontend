@@ -22,6 +22,8 @@
     "@angular/platform-browser": "~11.2.8",
     "@angular/platform-browser-dynamic": "~11.2.8",
     "@angular/router": "~11.2.8",
+    "@ngrx/effects": "^11.1.0",
+    "@ngrx/store": "^11.1.0",
     "mapbox-gl": "^1.11.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
