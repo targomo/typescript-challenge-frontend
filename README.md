@@ -1,4 +1,4 @@
-# Front End Coding Challenge
+# Targomo TypeScript Coding Challenge
 
 Dear candidate,
 
