@@ -9,15 +9,15 @@ export namespace fromTransitLines {
   export const selectedStopId = createSelector(transitLinesState, (state) => state.selectedStopId)
 
   export const linesList = createSelector(lines, (stateLines) =>
-    Object.entries(stateLines).map(([id, line]) => ({ lineId: id, numberOfStops: line.length }))
-  )
-
-  export const selectedStop = createSelector(selectedStopId, lines, (selStopId, stateLines) =>
-    Object.values(stateLines).find((line) => line.find((stop) => stop.stopId === selStopId))
+    Object.entries(stateLines).map(([id, line]) => ({ lineId: id, numberOfStops: line.length, stops: line }))
   )
 
   export const allStops = createSelector(lines, (stateLines) =>
     Object.values(stateLines).reduce((acc, line) => [...acc, ...line], [])
+  )
+
+  export const selectedStop = createSelector(selectedStopId, allStops, (selStopId, stops) =>
+    stops.find((stop) => stop.stopId === selStopId)
   )
 
   /**
