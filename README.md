@@ -38,7 +38,7 @@ We would like you to extend this small web application, which can be enhanced wi
 [There is a backlog of Tickets in this repo](https://github.com/targomo/typescript-challenge-frontend/issues). You can see this as an inspiration on what to do. The tickets are labelled with `frontend` and `fullstack` to indicate if we see this as a suitable ticket for front end or full stack candidates.
 
 - **You should not** work on ALL of the tickets. Pick some that you find interesting and focus on them.
-- If you have a really good idea on what to do with this app and its not in the backlog, go ahead and to that!
+- If you have a really good idea on what to do with this app and its not in the backlog, go ahead and do that!
 
 **For full stack applicants we have an additional repo, that adds a small back end service to the project [here](https://github.com/targomo/typescript-challenge-backend).** This repo also has some issues to suggest improvements. For full stack applicants issue [#3](https://github.com/targomo/typescript-challenge-frontend/issues/3) is mandatory.
 
@@ -51,8 +51,9 @@ We expect you to work an absolute maximum of eight hours on the challenge
 ## Evaluation
 
 - We will consider the code quality and the number of features delivered (keep in mind that quality is better than quantity)
+- The projects are set up to meet our internal style guide (folder structure, best practises, lint etc) please follow the exsisting guidlines (pro tip: use prettier and run `npm run lint` regularly)
 - Unit tests are appreciated, but dont get stuck on them
-- You will receive our feedback not later than one week after you submit it.
+- You will receive our feedback not later than one week after you submit it
 
 ## Next steps
 
