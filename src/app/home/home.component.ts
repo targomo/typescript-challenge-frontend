@@ -18,7 +18,7 @@ export class HomeComponent {
     this.lines$ = store.pipe(select(fromTransitLines.linesList))
   }
 
-  selectStop(selectedStopId: string) {
+  selectStop(selectedStopId: string): void {
     this.store.dispatch(TransitLinesActions.SelectStop({ selectedStopId }))
   }
 }

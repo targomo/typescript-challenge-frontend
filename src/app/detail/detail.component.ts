@@ -21,7 +21,7 @@ export class DetailComponent {
     this.stopName$ = this.selectedStop$.pipe(pluck('name'))
   }
 
-  clearSelection() {
+  clearSelection(): void {
     this.store.dispatch(TransitLinesActions.SelectStop({ selectedStopId: null }))
   }
 }

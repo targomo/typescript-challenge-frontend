@@ -60,4 +60,7 @@ export class Map {
 
   queryRenderedFeatures = jest.fn()
   removeFeatureState = jest.fn()
+
+  once = jest.fn().mockImplementation((name, cb) => cb())
+  on = jest.fn().mockImplementation((name, cb) => cb())
 }

@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     this.store.dispatch(TransitLinesActions.AddLine({ lineId: 'u9', line: u9 }))
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.map = new Map({
       center: { lat: 52.52, lng: 13.4 },
       zoom: 10,
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
       const STOPS_SOURCE_ID = 'stops-source'
 
       stopsSource$.subscribe((source) => {
-        const exsitingSource = <GeoJSONSource>this.map.getSource(STOPS_SOURCE_ID)
+        const exsitingSource = this.map.getSource(STOPS_SOURCE_ID) as GeoJSONSource
         if (exsitingSource) {
           exsitingSource.setData(source.data)
         } else {
