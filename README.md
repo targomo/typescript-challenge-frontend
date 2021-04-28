@@ -46,7 +46,7 @@ We would like you to extend this small web application, which can be enhanced wi
 
 To start the challenge just fork this repository (for full stack applicants also the back end repo) and commit your changes to your fork. As soon as you are finished, dont commit to your fork anymore and let us know. We will then review your results and get back to you as soon as possible.
 
-We expect you to work an absolute maximum of eight hours on the challenge
+We expect you to work an absolute maximum of six hours on the challenge
 
 ## Evaluation
 
