@@ -1,6 +1,6 @@
-import { Action, createReducer, on } from '@ngrx/store'
-import { TransitLine } from 'src/types/line'
-import { TransitLinesActions } from './transit-lines.actions'
+import { TransitLine } from 'types/line'
+import { AnyAction } from 'redux'
+import { TransitLinesActionTypes } from './transit-lines.actions'
 
 export const TRANSIT_LINES_KEY = 'transit-lines'
 
@@ -14,20 +14,21 @@ export const transitLinesInitialState: TransitLinesState = {
   selectedStopId: null,
 }
 
-const reducer = createReducer(
-  transitLinesInitialState,
-
-  on(TransitLinesActions.AddLine, (state, { lineId, line }) => ({
-    ...state,
-    lines: { ...state.lines, ...{ [lineId]: line } },
-  })),
-
-  on(TransitLinesActions.SelectStop, (state, { selectedStopId }) => ({
-    ...state,
-    selectedStopId,
-  }))
-)
-
-export function transitLinesReducer(state: TransitLinesState | undefined, action: Action): TransitLinesState {
-  return reducer(state, action)
+const transitLinesReducer = (state = transitLinesInitialState, { type, payload }: AnyAction): TransitLinesState => {
+  switch (type) {
+    case TransitLinesActionTypes.ADD_LINE:
+      return {
+        ...state,
+        lines: { ...state.lines, ...{ [payload.lineId]: payload.line } },
+      }
+    case TransitLinesActionTypes.SELECT_STOP:
+      return {
+        ...state,
+        selectedStopId: payload.selectedStopId,
+      }
+    default:
+      return state
+  }
 }
+
+export default transitLinesReducer

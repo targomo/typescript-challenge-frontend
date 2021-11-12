@@ -1,17 +1,12 @@
 module.exports = {
-  preset: 'jest-preset-angular',
+  moduleNameMapper: {
+    '\\.(css|scss)$': '<rootDir>/__mocks__/style.mock.js',
+    'mapbox-gl': '<rootDir>/__mocks__/mapbox-gl.ts',
+  },
+  setupFilesAfterEnv: ['<rootDir>/jestSetupAfterEnv.ts'],
+  moduleDirectories: ['node_modules', 'src'],
   verbose: false,
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   testMatch: ['**/?(*.)(spec).(ts|js)?(x)'],
-  setupFilesAfterEnv: ['<rootDir>/jestSetupAfterEnv.ts'],
-  setupFiles: ['jest-webgl-canvas-mock'],
-  moduleDirectories: ['node_modules', '.'],
-  collectCoverageFrom: ['src/**/*.{ts,js}', '!**/node_modules/**'],
-  coveragePathIgnorePatterns: [
-    '.module.ts',
-    '<rootDir>/src/main.ts',
-    '<rootDir>/src/polyfills.ts',
-    '<rootDir>/src/mocks',
-    '.mock.ts',
-  ],
+  testPathIgnorePatterns: ['./node_modules/'],
 }

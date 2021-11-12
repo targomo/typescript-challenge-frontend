@@ -1,4 +1,4 @@
-import { TransitLine } from 'src/types/line'
+import { TransitLine } from 'types/line'
 
 export const u9: TransitLine = [
   {

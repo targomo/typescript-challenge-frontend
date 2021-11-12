@@ -1,8 +1,7 @@
-@import '~@angular/material/theming';
-
 $background-color: #fff;
 $border-radius: 8px;
 $highlight-color: #eee;
+$icon-default-color: #000;
 
 @mixin background() {
   background: $background-color;
@@ -10,10 +9,6 @@ $highlight-color: #eee;
 
 @mixin border-radius() {
   border-radius: $border-radius;
-}
-
-@mixin shadow() {
-  @include mat-elevation(5);
 }
 
 @mixin title() {

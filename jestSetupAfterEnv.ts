@@ -1,5 +1,3 @@
-import 'jest-preset-angular/setup-jest'
-
 // localstorage mock in case you need it
 const storageMock = () => {
   let storage: any = {}

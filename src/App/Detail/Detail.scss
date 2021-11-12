@@ -1,0 +1,21 @@
+@import 'src/styles/mixins';
+
+.detail {
+  @include flex-column();
+  @include column-gap(1rem);
+  @include text();
+  .detail-header {
+    @include flex-row();
+    @include flex-align(space-between);
+    .title {
+      @include title();
+    }
+    .button {
+      margin: -0.5rem;
+
+      .icon {
+        color: $icon-default-color;
+      }
+    }
+  }
+}

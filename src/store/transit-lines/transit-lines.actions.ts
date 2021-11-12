@@ -1,7 +1,19 @@
-import { createAction, props } from '@ngrx/store'
-import { TransitLine } from 'src/types/line'
+import { TransitLine } from 'types/line'
+import { AnyAction } from 'redux'
 
-export namespace TransitLinesActions {
-  export const AddLine = createAction(`[TRANSIT LINES] Add a line`, props<{ lineId: string; line: TransitLine }>())
-  export const SelectStop = createAction(`[TRANSIT LINES] Select a stop`, props<{ selectedStopId: string }>())
+export enum TransitLinesActionTypes {
+  ADD_LINE = '[TRANSIT LINE ACTIONS] Add line',
+  SELECT_STOP = '[TRANSIT LINE ACTIONS] Select stop',
+}
+
+export namespace TransitLineActions {
+  export const AddLine = (lineId: string, line: TransitLine): AnyAction => ({
+    type: TransitLinesActionTypes.ADD_LINE,
+    payload: { lineId, line },
+  })
+
+  export const SelectStop = (selectedStopId: string): AnyAction => ({
+    type: TransitLinesActionTypes.SELECT_STOP,
+    payload: { selectedStopId },
+  })
 }

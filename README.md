@@ -31,7 +31,7 @@ We would like you to extend this small web application, which can be enhanced wi
 
 1. clone the repo
 2. `npm install`
-3. `npm run serve`
+3. `npm start`
 
 ## Backlog
 
@@ -51,7 +51,7 @@ We expect you to work an absolute maximum of six hours on the challenge
 ## Evaluation
 
 - We will consider the code quality and the number of features delivered (keep in mind that quality is better than quantity)
-- The projects are set up to meet our internal style guide (folder structure, best practises, lint etc) please follow the exsisting guidlines (pro tip: use prettier and run `npm run lint` regularly)
+- The projects are set up to meet our internal style guide (folder structure, best practises, lint etc) please follow the exsisting guidlines (pro tip: use prettier regularly)
 - Unit tests are appreciated, but dont get stuck on them
 - You will receive our feedback not later than one week after you submit it
 

@@ -1,22 +1,24 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store'
+import { createSelector } from 'reselect'
 import { GeoJSONSourceRaw } from 'mapbox-gl'
 import { TransitLinesState, TRANSIT_LINES_KEY } from './transit-lines.reducer'
+import { RootState } from 'store'
 
 export namespace fromTransitLines {
-  export const transitLinesState = createFeatureSelector<TransitLinesState>(TRANSIT_LINES_KEY)
+  export const transitLinesState = (state: RootState): TransitLinesState => state[TRANSIT_LINES_KEY]
 
-  export const lines = createSelector(transitLinesState, (state) => state.lines)
-  export const selectedStopId = createSelector(transitLinesState, (state) => state.selectedStopId)
+  export const lines = createSelector([transitLinesState], (state) => state.lines)
 
-  export const linesList = createSelector(lines, (stateLines) =>
+  export const selectedStopId = createSelector([transitLinesState], (state: TransitLinesState) => state.selectedStopId)
+
+  export const linesList = createSelector([lines], (stateLines) =>
     Object.entries(stateLines).map(([id, line]) => ({ lineId: id, numberOfStops: line.length, stops: line }))
   )
 
-  export const allStops = createSelector(lines, (stateLines) =>
+  export const allStops = createSelector([lines], (stateLines) =>
     Object.values(stateLines).reduce((acc, line) => [...acc, ...line], [])
   )
 
-  export const selectedStop = createSelector(selectedStopId, allStops, (selStopId, stops) =>
+  export const selectedStop = createSelector([selectedStopId, allStops], (selStopId, stops) =>
     stops.find((stop) => stop.stopId === selStopId)
   )
 
@@ -24,7 +26,7 @@ export namespace fromTransitLines {
    * Mapbox source for the locations
    */
   export const stopsPointGeoJson = createSelector(
-    allStops,
+    [allStops],
     (stops) =>
       ({
         type: 'geojson',
