@@ -1,4 +1,5 @@
 import 'jest-preset-angular/setup-jest'
+import { Map } from './__mocks__/mapbox-gl'
 
 // localstorage mock in case you need it
 const storageMock = () => {
@@ -20,3 +21,8 @@ Object.defineProperty(window.URL, 'createObjectURL', {
     return ''
   }),
 })
+
+jest.mock('maplibre-gl', () => ({
+  ...jest.requireActual('maplibre-gl'),
+  Map,
+}))

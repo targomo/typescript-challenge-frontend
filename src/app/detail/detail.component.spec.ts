@@ -1,11 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { Store } from '@ngrx/store'
 import { MockStore, provideMockStore } from '@ngrx/store/testing'
+import { mockTransitStop } from 'src/__mocks__/line.mock'
 import { RootState } from 'src/store/app.store'
 import { fromTransitLines } from 'src/store/transit-lines/transit-lines.selectors'
-
 import { DetailComponent } from './detail.component'
-import { DetailModule } from './detail.module'
 
 describe('DetailComponent', () => {
   let component: DetailComponent
@@ -14,12 +13,12 @@ describe('DetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DetailModule],
+      imports: [DetailComponent],
       providers: [provideMockStore()],
     }).compileComponents()
 
     mockStore = TestBed.inject(Store) as MockStore<RootState>
-    mockStore.overrideSelector(fromTransitLines.selectedStop, { name: 'fake stop' } as any)
+    mockStore.overrideSelector(fromTransitLines.selectedStop, mockTransitStop())
   })
 
   beforeEach(() => {
@@ -28,7 +27,7 @@ describe('DetailComponent', () => {
     fixture.detectChanges()
   })
 
-  it('should create', () => {
+  test('should create', () => {
     expect(component).toBeTruthy()
   })
 })

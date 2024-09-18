@@ -1,21 +1,24 @@
-import { Component } from '@angular/core'
-import { select, Store } from '@ngrx/store'
-import { Observable } from 'rxjs'
+import { ChangeDetectionStrategy, Component, Signal } from '@angular/core'
+import { MatIcon } from '@angular/material/icon'
+import { Store } from '@ngrx/store'
 import { RootState } from 'src/store/app.store'
 import { TransitLinesActions } from 'src/store/transit-lines/transit-lines.actions'
 import { fromTransitLines } from 'src/store/transit-lines/transit-lines.selectors'
-import { TransitStop } from 'src/types/stop'
+import { TransitLine } from 'src/types/line'
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [MatIcon],
 })
 export class HomeComponent {
-  lines$: Observable<{ lineId: string; numberOfStops: number; stops: TransitStop[] }[]>
+  readonly lines: Signal<TransitLine[]>
 
   constructor(private store: Store<RootState>) {
-    this.lines$ = store.pipe(select(fromTransitLines.linesList))
+    this.lines = this.store.selectSignal(fromTransitLines.selectAll)
   }
 
   selectStop(selectedStopId: string): void {

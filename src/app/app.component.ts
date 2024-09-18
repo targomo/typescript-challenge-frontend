@@ -1,8 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core'
+import { RouterOutlet } from '@angular/router'
 import { select, Store } from '@ngrx/store'
-import { GeoJSONSource, Map } from 'mapbox-gl'
+import { GeoJSONSource, Map } from 'maplibre-gl'
 import { MARKER_PAINT } from 'src/constants/marker-paint'
 import { u9 } from 'src/constants/u9'
+import { environment } from 'src/environments/environment'
 import { RootState } from 'src/store/app.store'
 import { TransitLinesActions } from 'src/store/transit-lines/transit-lines.actions'
 import { fromTransitLines } from 'src/store/transit-lines/transit-lines.selectors'
@@ -11,6 +13,9 @@ import { fromTransitLines } from 'src/store/transit-lines/transit-lines.selector
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [RouterOutlet],
 })
 export class AppComponent implements OnInit {
   @ViewChild('map', { static: true }) private mapRef: ElementRef<HTMLElement>
@@ -19,7 +24,7 @@ export class AppComponent implements OnInit {
 
   constructor(private store: Store<RootState>) {
     // Issue https://github.com/targomo/typescript-challenge-frontend/issues/3
-    this.store.dispatch(TransitLinesActions.AddLine({ lineId: 'u9', line: u9 }))
+    this.store.dispatch(TransitLinesActions.AddLine({ line: u9 }))
   }
 
   ngOnInit(): void {
@@ -27,7 +32,7 @@ export class AppComponent implements OnInit {
       center: { lat: 52.52, lng: 13.4 },
       zoom: 10,
       container: this.mapRef.nativeElement,
-      style: 'https://maps.targomo.com/styles/positron-gl-style.json',
+      style: `https://api.maptiler.com/maps/dataviz-light/style.json?key=${environment.maptilerApiKey}`,
     })
 
     this.map.once('load', () => {
@@ -50,7 +55,7 @@ export class AppComponent implements OnInit {
       // https://github.com/targomo/typescript-challenge-frontend/issues/2
       // https://github.com/targomo/typescript-challenge-frontend/issues/2
       // https://github.com/targomo/typescript-challenge-frontend/issues/6
-      // https://github.com/targomo/typescript-challenge-frontend/issues/8/
+      // https://github.com/targomo/typescript-challenge-frontend/issues/8
     })
   }
 }

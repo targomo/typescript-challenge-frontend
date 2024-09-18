@@ -1,4 +1,4 @@
-import { CirclePaint } from 'mapbox-gl'
+import { CircleLayerSpecification } from 'maplibre-gl'
 
 export const MARKER_PAINT = {
   'circle-color': '#000',
@@ -7,4 +7,4 @@ export const MARKER_PAINT = {
   'circle-stroke-color': '#fff',
   'circle-stroke-width': ['interpolate', ['linear'], ['zoom'], 5, 0.5, 15, 2],
   'circle-opacity': 1,
-} as CirclePaint
+} as CircleLayerSpecification['paint']

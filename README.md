@@ -14,12 +14,12 @@ The full dataset contains more information than what is currently displayed in t
 
 | property                  | type    | description                                     |
 | ------------------------- | ------- | ----------------------------------------------- |
-| `stopId`                  | string  | id of the stop                                  |
+| `id`                      | string  | id of the stop                                  |
 | `name`                    | string  | name of the stop                                |
 | `peopleOff`               | integer | number of people getting off at that stop       |
 | `peopleOn`                | integer | number of people getting on at that stop        |
-| `prevStopId`              | string  | id of the previous stop                         |
-| `nextStopId`              | string  | id of the next stop                             |
+| `prevId`                  | string  | id of the previous stop                         |
+| `nextId`                  | string  | id of the next stop                             |
 | `reachablePopulationWalk` | integer | number of reachable population in 30 min (walk) |
 | `reachablePopulationBike` | integer | number of reachable population in 30 min (bike) |
 | `lat`                     | float   | latitude coordinate                             |
@@ -31,7 +31,8 @@ We would like you to extend this small web application, which can be enhanced wi
 
 1. clone the repo
 2. `npm install`
-3. `npm run serve`
+3. create `.env` file with `MAPTILER_API_KEY={YOUR_PROVIDED_KEY}` variable
+4. `npm run serve`
 
 ## Backlog
 
