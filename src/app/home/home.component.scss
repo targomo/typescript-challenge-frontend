@@ -2,7 +2,7 @@
 
 :host {
   @include flex-column();
-  gap: var(--default-padding);
+  gap: var(--default-gap);
 
   .title {
     @include title();
@@ -14,23 +14,23 @@
 
   .line-item {
     @include flex-column();
-    gap: var(--small-padding);
+    gap: var(--small-gap);
     border: 1px solid var(--highlight-color);
     border-radius: var(--border-radius);
-    padding: var(--default-padding);
+    padding: var(--default-gap);
 
     .line-header {
       @include flex-row();
       @include flex-align(flex-start, center);
-      gap: var(--small-padding);
+      gap: var(--small-gap);
     }
 
     .stop-item {
       cursor: pointer;
-      padding: var(--small-padding);
+      padding: var(--small-gap);
       @include flex-row();
       @include flex-align(flex-start, center);
-      gap: var(--small-padding);
+      gap: var(--small-gap);
       border-radius: var(--border-radius);
       &:hover {
         background: var(--highlight-color);
