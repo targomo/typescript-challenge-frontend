@@ -4,7 +4,6 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing'
 import { RootState } from 'src/store/app.store'
 import { fromTransitLines } from 'src/store/transit-lines/transit-lines.selectors'
 import { HomeComponent } from './home.component'
-import { HomeModule } from './home.module'
 
 describe('HomeComponent', () => {
   let component: HomeComponent
@@ -13,12 +12,12 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeModule],
+      imports: [HomeComponent],
       providers: [provideMockStore()],
     }).compileComponents()
 
     mockStore = TestBed.inject(Store) as MockStore<RootState>
-    mockStore.overrideSelector(fromTransitLines.linesList, [])
+    mockStore.overrideSelector(fromTransitLines.selectAll, [])
   })
 
   beforeEach(() => {
@@ -27,7 +26,7 @@ describe('HomeComponent', () => {
     fixture.detectChanges()
   })
 
-  it('should create', () => {
+  test('should create', () => {
     expect(component).toBeTruthy()
   })
 })

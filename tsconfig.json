@@ -1,4 +1,3 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -10,12 +9,11 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
+    "useDefineForClassFields": false,
+    "target": "ESNext",
     "module": "es2020",
-    "types": ["jest", "node"],
-    "lib": ["es2020", "dom"]
-  },
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "lib": ["ESNext", "DOM"]
   }
 }

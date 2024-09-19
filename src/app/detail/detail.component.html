@@ -1,5 +1,5 @@
 <div class="detail-header">
-  <h1 class="title">{{(stopName$ | async) || 'No selection'}}</h1>
+  <h1 class="title">{{ stopName() }}</h1>
   <button mat-icon-button (click)="clearSelection()">
     <mat-icon>clear</mat-icon>
   </button>

@@ -1,19 +1,17 @@
-@import '~@angular/material/theming';
+@use '@angular/material' as mat;
 
-$background-color: #fff;
-$border-radius: 8px;
-$highlight-color: #eee;
+:root {
+  --background-color: #fff;
+  --highlight-color: #eee;
 
-@mixin background() {
-  background: $background-color;
-}
+  --border-radius: 8px;
 
-@mixin border-radius() {
-  border-radius: $border-radius;
+  --default-gap: 1rem;
+  --small-gap: 0.5rem;
 }
 
 @mixin shadow() {
-  @include mat-elevation(5);
+  @include mat.elevation(5);
 }
 
 @mixin title() {
@@ -39,18 +37,6 @@ $highlight-color: #eee;
 @mixin flex-column() {
   display: flex;
   flex-direction: column;
-}
-
-@mixin row-gap($size) {
-  & > :not(:last-child) {
-    margin-right: $size;
-  }
-}
-
-@mixin column-gap($size) {
-  & > :not(:last-child) {
-    margin-bottom: $size;
-  }
 }
 
 @mixin flex-align($justify: flex-start, $align: center) {

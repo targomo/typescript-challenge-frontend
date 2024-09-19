@@ -1,19 +1,3 @@
-export {
-  FeatureIdentifier,
-  GeoJSONSource,
-  GeoJSONSourceRaw,
-  Layer,
-  Map as MapboxMap,
-  MapboxEvent,
-  MapboxGeoJSONFeature,
-  MapboxOptions,
-  MapMouseEvent,
-  MapSourceDataEvent,
-  MapStyleDataEvent,
-  PointLike,
-  VectorSource,
-} from 'mapbox-gl'
-
 export class Map {
   private canvas = document.createElement('canvas')
 

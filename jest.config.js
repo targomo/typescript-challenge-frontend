@@ -3,15 +3,8 @@ module.exports = {
   verbose: false,
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   testMatch: ['**/?(*.)(spec).(ts|js)?(x)'],
-  setupFilesAfterEnv: ['<rootDir>/jestSetupAfterEnv.ts'],
-  setupFiles: ['jest-webgl-canvas-mock'],
-  moduleDirectories: ['node_modules', '.'],
+  setupFilesAfterEnv: ['jest-canvas-mock', '<rootDir>/jestSetupAfterEnv.ts'],
+  moduleDirectories: ['node_modules', '<rootDir>'],
   collectCoverageFrom: ['src/**/*.{ts,js}', '!**/node_modules/**'],
-  coveragePathIgnorePatterns: [
-    '.module.ts',
-    '<rootDir>/src/main.ts',
-    '<rootDir>/src/polyfills.ts',
-    '<rootDir>/src/mocks',
-    '.mock.ts',
-  ],
+  coveragePathIgnorePatterns: ['<rootDir>/src/main.ts', '.mock.ts'],
 }

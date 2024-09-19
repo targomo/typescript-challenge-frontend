@@ -7,16 +7,15 @@
   }
 
   .sidebar {
+    @include flex-column();
     position: absolute;
     left: 0;
     top: 0;
-    display: flex;
-    flex-direction: column;
-    margin: 1rem;
-    padding: 1rem;
+    margin: var(--default-gap);
+    padding: var(--default-gap);
     width: 400px;
-    @include background();
-    @include border-radius();
+    background: var(--background-color);
+    border-radius: var(--border-radius);
     @include shadow();
     > * {
       flex: 1 1 auto;

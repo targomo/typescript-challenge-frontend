@@ -1,24 +1,25 @@
-import { Component } from '@angular/core'
-import { select, Store } from '@ngrx/store'
-import { Observable } from 'rxjs'
-import { pluck, shareReplay } from 'rxjs/operators'
+import { ChangeDetectionStrategy, Component, computed, Signal } from '@angular/core'
+import { MatIconButton } from '@angular/material/button'
+import { MatIcon } from '@angular/material/icon'
+import { Store } from '@ngrx/store'
 import { RootState } from 'src/store/app.store'
 import { TransitLinesActions } from 'src/store/transit-lines/transit-lines.actions'
 import { fromTransitLines } from 'src/store/transit-lines/transit-lines.selectors'
-import { TransitStop } from 'src/types/stop'
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [MatIconButton, MatIcon],
 })
 export class DetailComponent {
-  selectedStop$: Observable<TransitStop>
-  stopName$: Observable<string>
+  readonly stopName: Signal<string>
 
   constructor(private store: Store<RootState>) {
-    this.selectedStop$ = this.store.pipe(select(fromTransitLines.selectedStop), shareReplay(1))
-    this.stopName$ = this.selectedStop$.pipe(pluck('name'))
+    const selectedStop = this.store.selectSignal(fromTransitLines.selectedStop)
+    this.stopName = computed(() => selectedStop()?.name || 'No selection')
   }
 
   clearSelection(): void {

@@ -2,7 +2,7 @@
 
 :host {
   @include flex-column();
-  @include column-gap(1rem);
+  gap: var(--default-gap);
 
   .title {
     @include title();
@@ -14,26 +14,26 @@
 
   .line-item {
     @include flex-column();
-    @include column-gap(0.5rem);
-    border: 1px solid $highlight-color;
-    @include border-radius();
-    padding: 1rem;
+    gap: var(--small-gap);
+    border: 1px solid var(--highlight-color);
+    border-radius: var(--border-radius);
+    padding: var(--default-gap);
 
     .line-header {
       @include flex-row();
       @include flex-align(flex-start, center);
-      @include row-gap(0.5rem);
+      gap: var(--small-gap);
     }
 
     .stop-item {
       cursor: pointer;
-      padding: 0.5rem;
+      padding: var(--small-gap);
       @include flex-row();
-      @include row-gap(0.5rem);
       @include flex-align(flex-start, center);
-      @include border-radius();
+      gap: var(--small-gap);
+      border-radius: var(--border-radius);
       &:hover {
-        background: $highlight-color;
+        background: var(--highlight-color);
       }
       mat-icon {
         width: 14px;

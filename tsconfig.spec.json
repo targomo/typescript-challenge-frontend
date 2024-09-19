@@ -4,8 +4,8 @@
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
     "emitDecoratorMetadata": true,
-    "types": ["jest"]
+    "types": ["jest", "node"],
+    "lib": ["ESNext", "DOM"]
   },
-  "files": ["src/test.ts", "src/polyfills.ts"],
   "include": ["src/**/*.spec.ts", "src/**/*.d.ts"]
 }
